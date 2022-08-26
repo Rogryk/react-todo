@@ -1,0 +1,42 @@
+.check-list-container {
+  position: absolute;
+  height: fit-content;
+  padding-bottom: 80px;
+  padding-right: 2px;
+  width: 100%;
+  max-width: 340px;
+  min-width: 140px;
+  overflow: hidden;
+  overflow: visible;
+}
+
+.scrollbox {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  width: 100%;
+  height: 58%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  position: relative;
+}
+
+.scrollbox::-webkit-scrollbar {
+  width: 15px;
+  background: rgba(0, 0, 0, 0.2);
+}
+.scrollbox::-webkit-scrollbar-button {
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.scrollbox::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.notes-separator {
+  margin-bottom: 5px;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}

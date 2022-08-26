@@ -1,13 +1,172 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: #134e5e; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #71b280,
+    #134e5e
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #71b280,
+    #134e5e
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-repeat: no-repeat;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-window {
+  height: 500px;
+  width: 400px;
+  border-radius: 5px;
+  background: rgb(60, 66, 74);
+}
+
+.top-nav {
+  margin: auto;
+  height: 50px;
+  width: 100%;
+  color: yellow;
+}
+
+.slide-pick {
+  width: 220px;
+  position: relative;
+  /* outline: 1px solid white; */
+}
+
+.slide-pick_position {
+  margin: auto;
+  margin-top: 1em;
+}
+
+.element {
+  text-align: center;
+}
+
+.element__description {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.arrow:hover {
+  cursor: pointer;
+}
+
+.arrow_left {
+  left: 0;
+}
+.arrow_right {
+  right: 0;
+}
+
+.center-abs-block-vertically {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.white-text {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.button-styles-reset {
+  background: none;
+  border: none;
+}
+
+.text-input-root {
+  margin: auto;
+  margin-top: 2em;
+  width: 85%;
+}
+
+.text-input-wrapper {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.color_white06 {
+  color: rgba(255, 255, 255, 0.6);
+}
+.color_white08 {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.rotate_-45 {
+  transform: rotateZ(-45deg);
+}
+
+.x-wrap {
+  overflow-x: wrap;
+  /* overflow-x: scroll; */
+}
+
+.y-scroll {
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.hov-pointer:hover {
+  cursor: pointer;
+}
+
+.input-form {
+  position: relative;
+}
+
+.calendar_position {
+  position: absolute;
+  right: 7.6%;
+  z-index: 3;
+}
+
+.calendar_colors {
+  /* background: rgb(46, 49, 53); */
+  background-color: rgb(48, 53, 59);
+  border: 1px solid rgb(53, 57, 63);
+}
+
+.arrowPicker__calendar-xposition {
+  right: -11%;
 }

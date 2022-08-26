@@ -1,0 +1,23 @@
+.popup-menu__button {
+  height: 20px;
+  width: 100%;
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.popup-menu__button:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.button__icon {
+  padding: 0 4px;
+  height: fit-content;
+  width: max-content;
+  display: flex;
+}
+
+.button__text::first-letter {
+  text-transform: capitalize;
+}

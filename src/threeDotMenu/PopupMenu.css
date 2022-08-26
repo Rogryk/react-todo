@@ -1,0 +1,26 @@
+.popup-menu {
+  position: absolute;
+  top: 23px;
+  right: -4px;
+  padding: 5px 5px;
+  height: fit-content;
+  width: max-content;
+  border: 1px solid rgba(0, 0, 0, 0.22);
+  border-radius: 5px;
+  background: rgb(74, 80, 88);
+  z-index: 1;
+}
+
+.popup-menu::before {
+  content: "";
+  position: absolute;
+  top: -5.2px;
+  right: 9.5px;
+  height: 9px;
+  width: 9px;
+  transform: rotateZ(45deg);
+  border-left: 1px solid rgba(0, 0, 0, 0.22);
+  border-top: 1px solid rgba(0, 0, 0, 0.22);
+  background: black;
+  background: rgba(72, 79, 89, 1);
+}

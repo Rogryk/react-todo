@@ -1,0 +1,78 @@
+.check-list__element {
+  position: relative;
+  /* padding-left: 1.85rem; */
+  height: fit-content;
+  min-height: 30px;
+  width: 100%;
+  display: flex;
+
+  /* outline: 1px solid red; */
+}
+
+.mantine-Checkbox-root {
+  height: 24px;
+}
+
+.mantine-Checkbox-input {
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background: rgba(60, 66, 74, 0.5);
+}
+
+.mantine-Checkbox-input:checked {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background: rgba(60, 66, 74, 0.5);
+}
+
+.text-box {
+  height: fit-content;
+  padding-left: 0.3em;
+  width: 88%;
+  color: rgba(255, 255, 255, 0.8);
+  overflow-wrap: anywhere;
+
+  /* outline: 1px solid white; */
+}
+
+.element__text {
+  width: 100%;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: start;
+}
+
+.element__memo {
+  height: fit-content;
+  max-width: 100%;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+  overflow-wrap: break-word;
+}
+
+.three-dot {
+  margin-top: 5px;
+}
+
+.memo-input-root {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 80%;
+  background: rgba(60, 66, 74, 1);
+  z-index: 1;
+}
+
+.memo-input-wrapper {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.element-container {
+  overflow: visible;
+  position: relative;
+}
+
+.element__pin-icon {
+  position: absolute;
+  left: -25px;
+  color: rgb(9, 146, 104);
+}
