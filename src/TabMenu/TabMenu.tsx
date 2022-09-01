@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Tabs, MantineProvider } from "@mantine/core";
 
 interface ITopMenu {
@@ -8,8 +8,8 @@ interface ITopMenu {
 
 const TopMenu: React.FC<ITopMenu> = ({ tabState, setTabState }) => {
   return (
-    <MantineProvider theme={{ colorScheme: "dark" }}>
-      <nav className="top-nav">
+    <div className="top-nav">
+      <MantineProvider theme={{ colorScheme: "dark" }}>
         <Tabs color="teal" value={tabState} onTabChange={setTabState}>
           <Tabs.List position="center">
             <Tabs.Tab value="day">Day</Tabs.Tab>
@@ -18,8 +18,8 @@ const TopMenu: React.FC<ITopMenu> = ({ tabState, setTabState }) => {
             <Tabs.Tab value="year">Year</Tabs.Tab>
           </Tabs.List>
         </Tabs>
-      </nav>
-    </MantineProvider>
+      </MantineProvider>
+    </div>
   );
 };
 

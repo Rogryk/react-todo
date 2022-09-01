@@ -83,7 +83,6 @@ const Input: React.FC<IInput> = ({ notesContainer, setNotesContainer }) => {
           <Calendar
             className="calendar_position calendar_colors"
             value={date}
-            // month={date}
             onChange={handleDateChange}
           />
         )}

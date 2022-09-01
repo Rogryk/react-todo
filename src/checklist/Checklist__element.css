@@ -24,35 +24,6 @@
   background: rgba(60, 66, 74, 0.5);
 }
 
-.text-box {
-  height: fit-content;
-  padding-left: 0.3em;
-  width: 88%;
-  color: rgba(255, 255, 255, 0.8);
-  overflow-wrap: anywhere;
-
-  /* outline: 1px solid white; */
-}
-
-.element__text {
-  width: 100%;
-  color: rgba(255, 255, 255, 0.8);
-  display: flex;
-  align-items: start;
-}
-
-.element__memo {
-  height: fit-content;
-  max-width: 100%;
-  font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.5);
-  overflow-wrap: break-word;
-}
-
-.three-dot {
-  margin-top: 5px;
-}
-
 .memo-input-root {
   position: absolute;
   top: 1.5rem;

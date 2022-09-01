@@ -2,8 +2,8 @@
 // TODO: add date select
 
 import React, { useState, useEffect } from "react";
-import ArrowDatePicker from "./ArrowDatePicker";
-import TopMenu from "./layout/TopMenu";
+import ArrowDatePicker from "./ArrowDatePicker/ArrowDatePicker";
+import TopMenu from "./TabMenu/TabMenu";
 import Input from "./layout/Input";
 import Checklist from "./checklist/Checklist";
 
@@ -22,11 +22,11 @@ const App = () => {
   >(null);
   const moment = require("moment");
 
-  useEffect(() => {
-    console.log(topMenuState);
-    notesContainer &&
-      console.log(notesFilters(topMenuState, selectedDate, notesContainer));
-  }, [topMenuState]);
+  // useEffect(() => {
+  //   console.log(topMenuState);
+  //   notesContainer &&
+  //     console.log(notesFilters(topMenuState, selectedDate, notesContainer));
+  // }, [topMenuState]);
 
   useEffect(() => {
     const localStorageData = localStorage.getItem("notesContainer") || null;

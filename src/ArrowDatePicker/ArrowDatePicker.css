@@ -1,0 +1,62 @@
+.arrowDatePicker {
+  width: 220px;
+  position: relative;
+}
+
+.center-hor {
+  margin: auto;
+}
+
+.arrowDatePicker_padding {
+  padding: 1em 0;
+}
+
+.button-styles-reset {
+  background: none;
+  border: none;
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.arrow:hover {
+  cursor: pointer;
+}
+
+.arrow_left {
+  left: 0;
+}
+.arrow_right {
+  right: 0;
+}
+
+.arrowPicker__calendar-xposition {
+  right: -11%;
+}
+
+.center-abs-block-vertically {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.button-styles-reset {
+  background: none;
+  border: none;
+}
+
+.calendar_position {
+  position: absolute;
+  right: 7.6%;
+  z-index: 3;
+}
+
+.calendar_colors {
+  background-color: rgb(48, 53, 59);
+  border: 1px solid rgb(53, 57, 63);
+}

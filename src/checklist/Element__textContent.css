@@ -1,0 +1,26 @@
+.text-box {
+  height: fit-content;
+  padding-left: 0.3em;
+  width: 88%;
+  color: rgba(255, 255, 255, 0.8);
+  overflow-wrap: anywhere;
+}
+
+.element__text {
+  width: 100%;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: start;
+}
+
+.element__memo {
+  height: fit-content;
+  max-width: 100%;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+  overflow-wrap: break-word;
+}
+
+.x-wrap {
+  overflow-x: wrap;
+}

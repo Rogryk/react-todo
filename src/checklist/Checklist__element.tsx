@@ -1,13 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Checkbox } from "@mantine/core";
-import { TextInput, MantineProvider } from "@mantine/core";
 import PushPinIcon from "@mui/icons-material/PushPin";
-import DeleteIcon from "@mui/icons-material/Delete";
-import StickyNote2Icon from "@mui/icons-material/StickyNote2";
-import PopupMenu from "../threeDotMenu/PopupMenu";
-import Input from "../layout/Input";
+import Element__textContent from "./Element__textContent";
+import Element__menuButton from "./Element__menuButton";
+import InputPopup from "../layout/InputPopup";
 import "./Checklist__element.css";
-import "../threeDotMenu/ThreeDotMenu.css";
 
 interface IChecklist__element {
   id: string;
@@ -39,23 +36,19 @@ interface IChecklist__element {
 
 const Checklist__element: React.FC<IChecklist__element> = (props) => {
   const { id, text, memo, priority, allNotes, setAllNotes } = props;
-
   const [checkboxStatus, setCheckboxStatus] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMemoInputOpen, setIsMemoInputOpen] = useState(false);
-  const [elementOperation, setElementOperation] = useState<any>(null);
-  const [inputValue, setInputValue] = useState("");
+  const [elementOperation, setElementOperation] = useState<string>("");
   const checkboxRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (elementOperation) {
       switch (elementOperation) {
         case "pinBtn":
-          console.log("pin", id);
           pinElement(id);
           break;
         case "deleteBtn":
-          console.log("delete", id);
           deleteElement(id);
           break;
         case "memoBtn":
@@ -65,7 +58,7 @@ const Checklist__element: React.FC<IChecklist__element> = (props) => {
       }
     }
     return () => {
-      setElementOperation(null);
+      setElementOperation("");
     };
   }, [elementOperation]);
 
@@ -79,7 +72,7 @@ const Checklist__element: React.FC<IChecklist__element> = (props) => {
     );
   };
 
-  const addMemo = (id: string, memo: string) => {
+  const addMemo = (memo: string) => {
     setAllNotes(
       allNotes.map((note) => {
         if (note.id === id) {
@@ -89,6 +82,7 @@ const Checklist__element: React.FC<IChecklist__element> = (props) => {
       })
     );
   };
+
   const pinElement = (id: string) => {
     setAllNotes(
       allNotes.map((note) => {
@@ -107,40 +101,6 @@ const Checklist__element: React.FC<IChecklist__element> = (props) => {
     }, 200); // checkbox handle delay
   };
 
-  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (inputValue) {
-      addMemo(id, inputValue);
-    }
-    setInputValue("");
-    setIsMemoInputOpen(false);
-  };
-
-  const pinIcon = (
-    <PushPinIcon
-      className="color_white08 rotate_-45"
-      style={{ fontSize: "15" }}
-    />
-  );
-  const noteIcon = (
-    <StickyNote2Icon className="color_white08" style={{ fontSize: "15" }} />
-  );
-  const deleteIcon = (
-    <DeleteIcon className="color_white08" style={{ fontSize: "15" }} />
-  );
-  const menuButtons = [
-    [
-      ["pinBtn", pinIcon, "Pin on the top"],
-      ["memoBtn", noteIcon, "Add a memo"],
-      ["deleteBtn", deleteIcon, "delete"],
-    ],
-    [
-      ["pinBtn", pinIcon, "Unpin from the top"],
-      ["memoBtn", noteIcon, "Add a memo"],
-      ["deleteBtn", deleteIcon, "delete"],
-    ],
-  ];
-
   return (
     <>
       <div className="element-container">
@@ -153,41 +113,17 @@ const Checklist__element: React.FC<IChecklist__element> = (props) => {
             onChange={(event) => checkButtonHandler(event)}
             color="rgb(60, 66, 74)"
           />
-          <div className="text-box">
-            <p className="element__text x-wrap">{text}</p>
-            <p className="element__memo ">{memo}</p>
-          </div>
-          <div className="three-dot">
-            <button
-              className="button-styles-reset three-dot__button"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              onBlur={() => setIsMenuOpen(false)}
-            ></button>
-          </div>
-          {isMenuOpen && (
-            <PopupMenu
-              buttons={priority ? menuButtons[1] : menuButtons[0]}
-              setElementOperation={setElementOperation}
-            />
-          )}
+          <Element__textContent note={text} memo={memo} />
+          <Element__menuButton
+            isOpen={isMenuOpen}
+            setMenuAction={setElementOperation}
+            buttonsSet={priority ? 1 : 0}
+          />
           {isMemoInputOpen && (
-            <MantineProvider theme={{ colorScheme: "dark" }}>
-              <form action="submit" onSubmit={(event) => submitHandler(event)}>
-                <TextInput
-                  autoFocus
-                  id="text-input"
-                  value={inputValue}
-                  onBlur={() => setIsMemoInputOpen(false)}
-                  onChange={(event) => setInputValue(event.currentTarget.value)}
-                  classNames={{
-                    root: "memo-input-root",
-                    input: "memo-input-wrapper",
-                  }}
-                  placeholder="Add a memo..."
-                  aria-label="memo input"
-                />
-              </form>
-            </MantineProvider>
+            <InputPopup
+              onSubmit={addMemo}
+              closePopup={() => setIsMemoInputOpen(false)}
+            />
           )}
         </div>
       </div>
