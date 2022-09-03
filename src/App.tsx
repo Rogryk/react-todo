@@ -1,6 +1,3 @@
-// TOFIX: dates preparation
-// TODO: add date select
-
 import React, { useState, useEffect } from "react";
 import ArrowDatePicker from "./ArrowDatePicker/ArrowDatePicker";
 import TopMenu from "./TabMenu/TabMenu";
@@ -19,16 +16,7 @@ export type Inote = {
 const App = () => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [topMenuState, setTopMenuState] = useState("day");
-  const [notesContainer, setNotesContainer] = useState<
-    | {
-        id: string;
-        text: string;
-        memo: string;
-        date: Date;
-        priority: boolean;
-      }[]
-    | null
-  >(null);
+  const [notesContainer, setNotesContainer] = useState<Inote[] | null>(null);
   const moment = require("moment");
 
   useEffect(() => {
@@ -128,6 +116,23 @@ const App = () => {
     }
   };
 
+  const updateNoteHandler = (updatedNote: Inote) => {
+    notesContainer &&
+      (!!updatedNote.text
+        ? setNotesContainer(
+            notesContainer.map((note: Inote) => {
+              if (note.id === updatedNote.id) {
+                return updatedNote;
+              } else {
+                return note;
+              }
+            })
+          )
+        : setNotesContainer(
+            notesContainer.filter((note) => note.id !== updatedNote.id)
+          ));
+  };
+
   return (
     <main className="main-window">
       <TopMenu tabState={topMenuState} setTabState={setTopMenuState} />
@@ -139,8 +144,8 @@ const App = () => {
       <Input onSubmit={submitHandler} />
       {notesContainer && (
         <Checklist
-          allNotes={notesFilters(topMenuState, selectedDate, notesContainer)}
-          setAllNotes={setNotesContainer}
+          list={notesFilters(topMenuState, selectedDate, notesContainer)}
+          onUpdate={updateNoteHandler}
         />
       )}
     </main>
