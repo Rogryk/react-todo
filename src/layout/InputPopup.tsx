@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { TextInput, MantineProvider } from "@mantine/core";
 
 import "./InputPopup.css";
@@ -6,10 +6,12 @@ import "./InputPopup.css";
 interface IInputPopup {
   onSubmit: (memo: string) => void;
   closePopup: () => void;
+  ref: React.RefObject<HTMLInputElement>;
 }
 
 const InputPopup: React.FC<IInputPopup> = (props) => {
   const [inputValue, setInputValue] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -24,6 +26,7 @@ const InputPopup: React.FC<IInputPopup> = (props) => {
     <form action="submit" onSubmit={submitHandler}>
       <MantineProvider theme={{ colorScheme: "dark" }}>
         <TextInput
+          ref={inputRef}
           autoFocus
           id="text-input"
           value={inputValue}

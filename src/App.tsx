@@ -6,6 +6,15 @@ import ArrowDatePicker from "./ArrowDatePicker/ArrowDatePicker";
 import TopMenu from "./TabMenu/TabMenu";
 import Input from "./layout/Input";
 import Checklist from "./checklist/Checklist";
+import { notePrep } from "./utilities/notePrep";
+
+export type Inote = {
+  id: string;
+  text: string;
+  memo: string;
+  date: Date;
+  priority: boolean;
+};
 
 const App = () => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
@@ -21,12 +30,6 @@ const App = () => {
     | null
   >(null);
   const moment = require("moment");
-
-  // useEffect(() => {
-  //   console.log(topMenuState);
-  //   notesContainer &&
-  //     console.log(notesFilters(topMenuState, selectedDate, notesContainer));
-  // }, [topMenuState]);
 
   useEffect(() => {
     const localStorageData = localStorage.getItem("notesContainer") || null;
@@ -119,6 +122,12 @@ const App = () => {
     return filteredNotes;
   };
 
+  const submitHandler = (inputText: string, date: Date) => {
+    if (inputText && notesContainer) {
+      setNotesContainer([...notesContainer, notePrep(inputText, date)]);
+    }
+  };
+
   return (
     <main className="main-window">
       <TopMenu tabState={topMenuState} setTabState={setTopMenuState} />
@@ -127,10 +136,7 @@ const App = () => {
         setDate={setSelectedDate}
         displayOpt={topMenuState}
       />
-      <Input
-        notesContainer={notesContainer}
-        setNotesContainer={setNotesContainer}
-      />
+      <Input onSubmit={submitHandler} />
       {notesContainer && (
         <Checklist
           allNotes={notesFilters(topMenuState, selectedDate, notesContainer)}

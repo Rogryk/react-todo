@@ -2,35 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { TextInput, MantineProvider } from "@mantine/core";
 import { Calendar } from "@mantine/dates";
 import { IconAlignLeft, IconCalendar } from "@tabler/icons";
-import { notePrep } from "../utilities/notePrep";
 import { useOutsideAlerter } from "../hooks/useOutsideAlerter";
 import "../index.css";
 
 interface IInput {
-  notesContainer:
-    | {
-        id: string;
-        text: string;
-        memo: string;
-        date: Date;
-        priority: boolean;
-      }[]
-    | null;
-  setNotesContainer: React.Dispatch<
-    React.SetStateAction<
-      | {
-          id: string;
-          text: string;
-          memo: string;
-          date: Date;
-          priority: boolean;
-        }[]
-      | null
-    >
-  >;
+  onSubmit: (inputText: string, date: Date) => void;
 }
 
-const Input: React.FC<IInput> = ({ notesContainer, setNotesContainer }) => {
+const Input: React.FC<IInput> = ({ onSubmit }) => {
   const [inputValue, setInputValue] = useState("");
   const [date, setDate] = useState<Date>(new Date());
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
@@ -45,12 +24,12 @@ const Input: React.FC<IInput> = ({ notesContainer, setNotesContainer }) => {
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (inputValue && notesContainer) {
-      setNotesContainer([...notesContainer, notePrep(inputValue, date)]);
-    }
+    onSubmit(inputValue, date);
+
+    // reset component states
     setInputValue("");
-    setIsCalendarOpen(false);
     setDate(new Date());
+    setIsCalendarOpen(false);
   };
 
   const handleDateChange = (value: Date) => {
@@ -62,7 +41,7 @@ const Input: React.FC<IInput> = ({ notesContainer, setNotesContainer }) => {
       <form
         className="input-form"
         action="submit"
-        onSubmit={(event) => submitHandler(event)}
+        onSubmit={submitHandler}
         ref={formRef}
       >
         <TextInput

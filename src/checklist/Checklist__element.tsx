@@ -2,45 +2,25 @@ import React, { useEffect, useState, useRef } from "react";
 import { Checkbox } from "@mantine/core";
 import PushPinIcon from "@mui/icons-material/PushPin";
 import Element__textContent from "./Element__textContent";
-import Element__menuButton from "./Element__menuButton";
+import Element__menu from "./ElementMenu/Element__menu";
 import InputPopup from "../layout/InputPopup";
+import { Inote } from "../App";
 import "./Checklist__element.css";
 
 interface IChecklist__element {
-  id: string;
-  text: string;
-  memo: string;
-  date: Date;
-  priority: boolean;
-
-  allNotes: {
-    id: string;
-    text: string;
-    memo: string;
-    date: Date;
-    priority: boolean;
-  }[];
-  setAllNotes: React.Dispatch<
-    React.SetStateAction<
-      | {
-          id: string;
-          text: string;
-          memo: string;
-          date: Date;
-          priority: boolean;
-        }[]
-      | null
-    >
-  >;
+  note: Inote;
+  allNotes: Inote[];
+  setAllNotes: React.Dispatch<React.SetStateAction<Inote[] | null>>;
 }
 
 const Checklist__element: React.FC<IChecklist__element> = (props) => {
-  const { id, text, memo, priority, allNotes, setAllNotes } = props;
+  const { allNotes, setAllNotes } = props;
+  const { id, text, memo, priority } = props.note;
   const [checkboxStatus, setCheckboxStatus] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMemoInputOpen, setIsMemoInputOpen] = useState(false);
   const [elementOperation, setElementOperation] = useState<string>("");
   const checkboxRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (elementOperation) {
@@ -53,7 +33,7 @@ const Checklist__element: React.FC<IChecklist__element> = (props) => {
           break;
         case "memoBtn":
           setIsMemoInputOpen(true);
-          document.getElementById(".text-input")?.focus();
+          inputRef?.current?.focus();
           break;
       }
     }
@@ -101,33 +81,35 @@ const Checklist__element: React.FC<IChecklist__element> = (props) => {
     }, 200); // checkbox handle delay
   };
 
+  const menuClickHandler = (operation: string) => {
+    setElementOperation(operation);
+  };
+
   return (
-    <>
-      <div className="element-container">
-        {priority && <PushPinIcon className="element__pin-icon rotate_-45" />}
-        <div id={id} className="check-list__element">
-          <Checkbox
-            className="checkbox"
-            checked={checkboxStatus}
-            ref={checkboxRef}
-            onChange={(event) => checkButtonHandler(event)}
-            color="rgb(60, 66, 74)"
+    <div className="element-container">
+      {priority && <PushPinIcon className="element__pin-icon rotate_-45" />}
+      <div id={id} className="check-list__element">
+        <Checkbox
+          className="checkbox"
+          checked={checkboxStatus}
+          ref={checkboxRef}
+          onChange={checkButtonHandler}
+          color="rgb(60, 66, 74)"
+        />
+        <Element__textContent note={text} memo={memo} />
+        <Element__menu
+          menuClickHandler={menuClickHandler}
+          buttonsSet={priority ? 1 : 0}
+        />
+        {isMemoInputOpen && (
+          <InputPopup
+            ref={inputRef}
+            onSubmit={addMemo}
+            closePopup={() => setIsMemoInputOpen(false)}
           />
-          <Element__textContent note={text} memo={memo} />
-          <Element__menuButton
-            isOpen={isMenuOpen}
-            setMenuAction={setElementOperation}
-            buttonsSet={priority ? 1 : 0}
-          />
-          {isMemoInputOpen && (
-            <InputPopup
-              onSubmit={addMemo}
-              closePopup={() => setIsMemoInputOpen(false)}
-            />
-          )}
-        </div>
+        )}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -2,15 +2,15 @@ import React from "react";
 import "./PopupMenu__button.css";
 
 interface IPopupMenu__button {
-  id: any;
-  icon?: any;
-  text: string | JSX.Element;
-  setElementOperation: React.Dispatch<React.SetStateAction<string>>;
+  id: string;
+  icon?: string | JSX.Element;
+  text: string;
+  onClick: (operation: string) => void;
 }
 
 const PopupMenu__button: React.FC<IPopupMenu__button> = (props) => {
   const clickHandler = () => {
-    props.setElementOperation(props.id);
+    props.onClick(props.id);
   };
 
   return (

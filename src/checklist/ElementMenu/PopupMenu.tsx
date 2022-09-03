@@ -7,7 +7,7 @@ import "./PopupMenu.css";
 
 interface IPopupMenu {
   buttonsSet: number;
-  setElementOperation: React.Dispatch<React.SetStateAction<string>>;
+  onClick: (operation: string) => void;
 }
 
 const Popup: React.FC<IPopupMenu> = (props) => {
@@ -43,10 +43,10 @@ const Popup: React.FC<IPopupMenu> = (props) => {
         return (
           <PopupMenu__button
             key={index}
-            id={button[0]}
+            id={button[0].toString()}
             icon={button[1]}
-            text={button[2]}
-            setElementOperation={props.setElementOperation}
+            text={button[2].toString()}
+            onClick={props.onClick}
           />
         );
       })}

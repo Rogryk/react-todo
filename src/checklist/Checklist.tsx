@@ -1,63 +1,39 @@
 import React, { useState } from "react";
 import Checklist__element from "./Checklist__element";
 import "./Checklist.css";
+import { Inote } from "../App";
 
 interface IChecklist {
-  allNotes: {
-    id: string;
-    text: string;
-    memo: string;
-    date: Date;
-    priority: boolean;
-  }[];
-  setAllNotes: React.Dispatch<
-    React.SetStateAction<
-      | {
-          id: string;
-          text: string;
-          memo: string;
-          date: Date;
-          priority: boolean;
-        }[]
-      | null
-    >
-  >;
+  allNotes: Inote[];
+  setAllNotes: React.Dispatch<React.SetStateAction<Inote[] | null>>;
 }
 
-const Checklist: React.FC<IChecklist> = ({ allNotes, setAllNotes }) => {
+const Checklist: React.FC<IChecklist> = ({ allNotes: list, setAllNotes }) => {
   const [isPinnedNotes, setIsPinnedNotes] = useState(false);
   return (
     <div className="scrollbox">
       <section className="check-list-container y-scroll">
-        {allNotes.map((note) => {
+        {list.map((note) => {
           if (note.priority === true) {
             !isPinnedNotes && setIsPinnedNotes(true);
             return (
               <Checklist__element
                 key={note.id}
-                id={note.id}
-                text={note.text}
-                memo={note.memo}
-                date={note.date}
-                priority={note.priority}
-                allNotes={allNotes}
+                note={note}
+                allNotes={list}
                 setAllNotes={setAllNotes}
               />
             );
           }
         })}
         {isPinnedNotes && <div className="notes-separator"></div>}
-        {allNotes.map((note) => {
+        {list.map((note) => {
           if (note.priority === false) {
             return (
               <Checklist__element
                 key={note.id}
-                id={note.id}
-                text={note.text}
-                memo={note.memo}
-                date={note.date}
-                priority={note.priority}
-                allNotes={allNotes}
+                note={note}
+                allNotes={list}
                 setAllNotes={setAllNotes}
               />
             );
