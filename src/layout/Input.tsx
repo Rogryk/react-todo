@@ -24,7 +24,7 @@ const Input: React.FC<IInput> = ({ onSubmit }) => {
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSubmit(inputValue, date);
+    inputValue.trim() && onSubmit(inputValue, date);
 
     // reset component states
     setInputValue("");
