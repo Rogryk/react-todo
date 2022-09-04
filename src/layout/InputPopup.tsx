@@ -7,10 +7,11 @@ interface IInputPopup {
   onSubmit: (memo: string) => void;
   closePopup: () => void;
   ref: React.RefObject<HTMLInputElement>;
+  value: string;
 }
 
 const InputPopup: React.FC<IInputPopup> = (props) => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(props.value);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {

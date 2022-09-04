@@ -89,6 +89,7 @@ const Checklist__element: React.FC<IChecklist__element> = (props) => {
             ref={inputRef}
             onSubmit={memoInputHandler}
             closePopup={() => setIsMemoInputOpen(false)}
+            value={note.memo}
           />
         )}
       </div>
