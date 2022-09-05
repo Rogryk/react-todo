@@ -1,10 +1,10 @@
 .popup-menu {
   position: absolute;
-  top: 23px;
   right: -4px;
   padding: 5px 5px;
-  height: fit-content;
-  width: max-content;
+  height: 0;
+  width: 0;
+  overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.22);
   border-radius: 5px;
   background: rgb(74, 80, 88);
@@ -19,6 +19,33 @@
   height: 9px;
   width: 9px;
   transform: rotateZ(45deg);
+  border-left: 1px solid rgba(0, 0, 0, 0.22);
+  border-top: 1px solid rgba(0, 0, 0, 0.22);
+  background: black;
+  background: rgba(72, 79, 89, 1);
+}
+
+.popup-menu_top-position {
+  top: 23px;
+}
+
+.popup-menu_top-position-reversed {
+  top: -93px;
+}
+
+.popup-menu_size {
+  height: fit-content;
+  width: max-content;
+}
+
+.popup-menu_positionReversed::before {
+  content: "";
+  position: absolute;
+  top: 78px;
+  right: 9.5px;
+  height: 9px;
+  width: 9px;
+  transform: rotateZ(225deg);
   border-left: 1px solid rgba(0, 0, 0, 0.22);
   border-top: 1px solid rgba(0, 0, 0, 0.22);
   background: black;

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { MantineProvider } from "@mantine/core";
 import { Calendar } from "@mantine/dates";
 import { useOutsideAlerter } from "../hooks/useOutsideAlerter";
 import { useDateArrayState } from "../hooks/useDateArrayState";
@@ -86,13 +85,11 @@ const ArrowDatePicker: React.FC<IArrowDatePicker> = ({
       />
       <ArrowButton direction={"right"} onClick={arrowButtonHandler} />
       {isCalendarOpen && (
-        <MantineProvider theme={{ colorScheme: "dark" }}>
-          <Calendar
-            className="calendar_position calendar_colors arrowPicker__calendar-xposition"
-            value={date}
-            onChange={handleDateChange}
-          />
-        </MantineProvider>
+        <Calendar
+          className="calendar_position calendar_colors arrowPicker__calendar-xposition"
+          value={date}
+          onChange={handleDateChange}
+        />
       )}
     </div>
   );

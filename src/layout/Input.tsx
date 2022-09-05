@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { TextInput, MantineProvider } from "@mantine/core";
+import { TextInput } from "@mantine/core";
 import { Calendar } from "@mantine/dates";
 import { IconAlignLeft, IconCalendar } from "@tabler/icons";
 import { useOutsideAlerter } from "../hooks/useOutsideAlerter";
@@ -37,36 +37,34 @@ const Input: React.FC<IInput> = ({ onSubmit }) => {
   };
 
   return (
-    <MantineProvider theme={{ colorScheme: "dark" }}>
-      <form
-        className="input-form"
-        action="submit"
-        onSubmit={submitHandler}
-        ref={formRef}
-      >
-        <TextInput
-          value={inputValue}
-          onChange={(event) => setInputValue(event.currentTarget.value)}
-          classNames={{ root: "text-input-root", input: "text-input-wrapper" }}
-          placeholder="Add a task..."
-          icon={<IconAlignLeft size={14} />}
-          rightSection={
-            <IconCalendar
-              className="hov-pointer color_white06"
-              onClick={() => setIsCalendarOpen(!isCalendarOpen)}
-            />
-          }
-          aria-label="task input"
-        />
-        {isCalendarOpen && (
-          <Calendar
-            className="calendar_position calendar_colors"
-            value={date}
-            onChange={handleDateChange}
+    <form
+      className="input-form"
+      action="submit"
+      onSubmit={submitHandler}
+      ref={formRef}
+    >
+      <TextInput
+        value={inputValue}
+        onChange={(event) => setInputValue(event.currentTarget.value)}
+        classNames={{ root: "text-input-root", input: "text-input-wrapper" }}
+        placeholder="Add a task..."
+        icon={<IconAlignLeft size={14} />}
+        rightSection={
+          <IconCalendar
+            className="hov-pointer color_white06"
+            onClick={() => setIsCalendarOpen(!isCalendarOpen)}
           />
-        )}
-      </form>
-    </MantineProvider>
+        }
+        aria-label="task input"
+      />
+      {isCalendarOpen && (
+        <Calendar
+          className="calendar_position calendar_colors"
+          value={date}
+          onChange={handleDateChange}
+        />
+      )}
+    </form>
   );
 };
 

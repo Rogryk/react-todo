@@ -6,18 +6,14 @@
 
 .menu__mainButton {
   position: absolute;
-  height: 100%;
-  width: 100%;
+  right: 0;
+  top: 50%;
+  height: fit-content;
+  width: fit-content;
   color: rgba(255, 255, 255, 0.8);
   font-family: inherit;
   font-size: 30px;
   cursor: pointer;
   overflow: hidden;
-}
-
-.menu__mainButton::after {
-  content: "···";
-  position: absolute;
-  bottom: -11px;
-  right: 0;
+  transform: translateY(-70%);
 }

@@ -10,10 +10,11 @@ import "./Checklist__element.css";
 interface IChecklist__element {
   note: Inote;
   onChange: (updatedNote: Inote) => void;
+  scrollBoxRef: any;
 }
 
 const Checklist__element: React.FC<IChecklist__element> = (props) => {
-  const { note, onChange } = props;
+  const { note, onChange, scrollBoxRef } = props;
 
   const [checkboxStatus, setCheckboxStatus] = useState(false);
   const [isMemoInputOpen, setIsMemoInputOpen] = useState(false);

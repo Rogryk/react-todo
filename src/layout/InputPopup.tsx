@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { TextInput, MantineProvider } from "@mantine/core";
+import { TextInput } from "@mantine/core";
 
 import "./InputPopup.css";
 
@@ -25,22 +25,20 @@ const InputPopup: React.FC<IInputPopup> = (props) => {
 
   return (
     <form action="submit" onSubmit={submitHandler}>
-      <MantineProvider theme={{ colorScheme: "dark" }}>
-        <TextInput
-          ref={inputRef}
-          autoFocus
-          id="text-input"
-          value={inputValue}
-          onBlur={props.closePopup}
-          onChange={(event) => setInputValue(event.currentTarget.value)}
-          classNames={{
-            root: "memo-input-root",
-            input: "memo-input-wrapper",
-          }}
-          placeholder="Add a memo..."
-          aria-label="memo input"
-        />
-      </MantineProvider>
+      <TextInput
+        ref={inputRef}
+        autoFocus
+        id="text-input"
+        value={inputValue}
+        onBlur={props.closePopup}
+        onChange={(event) => setInputValue(event.currentTarget.value)}
+        classNames={{
+          root: "memo-input-root",
+          input: "memo-input-wrapper",
+        }}
+        placeholder="Add a memo..."
+        aria-label="memo input"
+      />
     </form>
   );
 };

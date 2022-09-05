@@ -1,15 +1,3 @@
-.check-list-container {
-  position: absolute;
-  height: fit-content;
-  padding-bottom: 80px;
-  padding-right: 2px;
-  width: 100%;
-  max-width: 340px;
-  min-width: 140px;
-  overflow: hidden;
-  overflow: visible;
-}
-
 .scrollbox {
   display: flex;
   justify-content: center;
@@ -19,6 +7,18 @@
   overflow-y: auto;
   scrollbar-width: thin;
   position: relative;
+}
+
+.check-list-container {
+  position: absolute;
+  height: fit-content;
+  /* padding-bottom: 80px; */
+  padding-right: 2px;
+  width: 100%;
+  max-width: 340px;
+  min-width: 140px;
+  overflow: hidden;
+  overflow: visible;
 }
 
 .scrollbox::-webkit-scrollbar {
