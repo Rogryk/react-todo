@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ArrowDatePicker from "./ArrowDatePicker/ArrowDatePicker";
-import TopMenu from "./TabMenu/TabMenu";
+import TabMenu from "./TabMenu/TabMenu";
 import Input from "./layout/Input";
 import Checklist from "./checklist/Checklist";
 import { notePrep } from "./utilities/notePrep";
@@ -135,7 +135,7 @@ const App = () => {
 
   return (
     <main className="main-window">
-      <TopMenu tabState={topMenuState} setTabState={setTopMenuState} />
+      <TabMenu tabState={topMenuState} setTabState={setTopMenuState} />
       <ArrowDatePicker
         date={selectedDate}
         setDate={setSelectedDate}

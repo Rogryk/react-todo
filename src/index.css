@@ -77,8 +77,8 @@ body {
   color: rgba(255, 255, 255, 0.8);
 }
 
-.rotate_-45 {
-  transform: rotateZ(-45deg);
+.rotate_-80 {
+  transform: rotateZ(-80deg);
 }
 
 .x-wrap {

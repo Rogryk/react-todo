@@ -1,12 +1,12 @@
 import React from "react";
 import { Tabs } from "@mantine/core";
 
-interface ITopMenu {
+interface ITabMenu {
   tabState: string;
   setTabState: React.Dispatch<React.SetStateAction<any>>;
 }
 
-const TopMenu: React.FC<ITopMenu> = ({ tabState, setTabState }) => {
+const TabMenu: React.FC<ITabMenu> = ({ tabState, setTabState }) => {
   return (
     <div className="top-nav">
       <Tabs color="teal" value={tabState} onTabChange={setTabState}>
@@ -21,4 +21,4 @@ const TopMenu: React.FC<ITopMenu> = ({ tabState, setTabState }) => {
   );
 };
 
-export default TopMenu;
+export default TabMenu;

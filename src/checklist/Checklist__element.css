@@ -1,12 +1,9 @@
 .check-list__element {
   position: relative;
-  /* padding-left: 1.85rem; */
   height: fit-content;
   min-height: 30px;
   width: 100%;
   display: flex;
-
-  /* outline: 1px solid red; */
 }
 
 .mantine-Checkbox-root {
@@ -45,5 +42,4 @@
 .element__pin-icon {
   position: absolute;
   left: -25px;
-  color: rgb(9, 146, 104);
 }

@@ -1,15 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./Element__menu.css";
 import { Menu } from "@mantine/core";
-import {
-  IconSettings,
-  IconSearch,
-  IconPhoto,
-  IconMessageCircle,
-  IconTrash,
-  IconArrowsLeftRight,
-  IconPin,
-} from "@tabler/icons";
+import { IconMessageCircle, IconTrash, IconPin } from "@tabler/icons";
 
 interface IElement__menuButton {
   buttonsSet: number;

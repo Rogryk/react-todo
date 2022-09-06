@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Checkbox } from "@mantine/core";
-import PushPinIcon from "@mui/icons-material/PushPin";
+import { IconPin } from "@tabler/icons";
 import Element__textContent from "./Element__textContent";
 import Element__menu from "./ElementMenu/Element__menu";
 import InputPopup from "../layout/InputPopup";
@@ -69,9 +69,7 @@ const Checklist__element: React.FC<IChecklist__element> = (props) => {
 
   return (
     <div className="element-container">
-      {note.priority && (
-        <PushPinIcon className="element__pin-icon rotate_-45" />
-      )}
+      {note.priority && <IconPin className="element__pin-icon rotate_-80" />}
       <div id={note.id} className="check-list__element">
         <Checkbox
           className="checkbox"
