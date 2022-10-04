@@ -5,5 +5,5 @@ It's also a playground for future practice of more react concepts, like redux, c
 
 
 - Allows to add ToDos for days/weeks/months/years. 
-- Every ToDo can contains submenu to pin/unpin, add memo note or delete entry.
+- Every ToDo contains submenu to pin/unpin, add memo note or delete entry.
 - Notes are saved in Local Storage.
