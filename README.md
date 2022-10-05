@@ -13,4 +13,4 @@ It's also a playground for future practice of more react concepts, like redux, c
 
 # Live site 
 
-https://benevolent-kleicha-13de80.netlify.app/
+http://todo-rg.netlify.app
